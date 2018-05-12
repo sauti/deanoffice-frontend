@@ -3,10 +3,11 @@ import {LoginComponent} from './login.component';
 import {FormsModule} from '@angular/forms';
 import {AppRoutingModule} from '../../routes/routes';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {DashboardGuard, LoginGuard} from '../../services/auth/auth.guard';
+import {AdminGuard, DashboardGuard, LoginGuard} from '../../services/auth/auth.guard';
 import {AuthenticationService} from '../../services/auth/authentication.service';
 import {TokenInterceptor} from '../../services/auth/token.interceptor';
 import {BrowserModule} from '@angular/platform-browser';
+import {CurrentUserService} from '../../services/auth/current-user.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import {BrowserModule} from '@angular/platform-browser';
   providers: [
     DashboardGuard,
     LoginGuard,
+    AdminGuard,
     AuthenticationService,
+    CurrentUserService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

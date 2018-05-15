@@ -3,13 +3,21 @@
     <div class="col content py-3">
       <div class="groups-table h-100">
         <div class="row">
-          <input class="selection-panel search" type="text" placeholder="Пошук за ім'ям" [(ngModel)]="searchText">
-          <label class="selection-panel active-group"><input
-            type="checkbox"
-            [checked]="actualGroups"
-            (change)="actualGroups =!actualGroups; getGroups(actualGroups)">
-            Актуальні групи
-          </label>
+            <input class="selection-panel search" type="text" placeholder="Пошук за ім'ям" [(ngModel)]="searchText">
+            <label class="selection-panel active-group"><input
+              type="checkbox"
+              [checked]="actualGroups"
+              (change)="actualGroups =!actualGroups; getGroups(actualGroups)">
+              Актуальні групи
+            </label>
+          <div class="col mb-3 d-flex justify-content-between">
+            <div></div>
+            <div>
+            <button class="btn btn-danger ">Видалити</button>
+            <button class="btn btn-warning ">Редагувати</button>
+            <button class="btn btn-success ">Створити</button>
+            </div>
+          </div>
         </div>
         <group-table
           [rows]="groups"

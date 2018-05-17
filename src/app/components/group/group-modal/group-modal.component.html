@@ -6,14 +6,39 @@
 </div>
 <div class="modal-body">
   <div class="container-fluid">
-    <input type="text" [(ngModel)]="group.name" placeholder="Name" class="form-control">
-    <input type="text" [(ngModel)]="group.specialization.name" placeholder="Name" class="form-control">
-    <input type="text" [(ngModel)]="group.beginYears" placeholder="Name" class="form-control">
-    <input type="text" [(ngModel)]="group.creationYear" placeholder="Name" class="form-control">
-    <input type="text" [(ngModel)]="group.studySemesters" placeholder="Name" class="form-control">
-    <input type="text" [(ngModel)]="group.studyYears" placeholder="Name" class="form-control">
-    <input type="text" [(ngModel)]="group.tuitionForm" placeholder="Name" class="form-control">
-    <input type="text" [(ngModel)]="group.tuitionTerm" placeholder="Name" class="form-control">
+    <div class="row">
+      <div class="col-4">
+        <label for="name" class="form-label">Назва</label>
+        <input type="text" [(ngModel)]="group.name" placeholder="Name" class="form-control" id="name">
+      </div>
+      <div class="col-4">
+        <label for="spec" class="form-label">Спеціалізація</label>
+        <input type="text" [(ngModel)]="group.specialization.name" placeholder="Name" class="form-control" id="spec">
+      </div>
+      <div class="col-4">
+        <label for="beginYears" class="form-label">Початковий курс</label>
+        <input type="text" [(ngModel)]="group.beginYears" placeholder="Name" class="form-control" id="beginYears">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <label for="creationYear">Рік створення</label>
+        <input type="text" [(ngModel)]="group.creationYear" placeholder="Name" class="form-control" id="creationYear">
+      </div>
+      <div class="col-4">
+        <label for="studySemesters">Cеместрів</label>
+        <input type="text" [(ngModel)]="group.studySemesters" placeholder="Name" class="form-control"
+               id="studySemesters">
+      </div>
+      <div class="col-4">
+        <label for="studyYears">Років навчання</label>
+        <input type="text" [(ngModel)]="group.studyYears" placeholder="Name" class="form-control" id="studyYears">
+      </div>
+    </div>
+    <div class="row">
+      <input type="text" [(ngModel)]="group.tuitionForm" placeholder="Name" class="form-control" id="tF">
+      <input type="text" [(ngModel)]="group.tuitionTerm" placeholder="Name" class="form-control" id="tT">
+    </div>
   </div>
 </div>
 <div class="modal-footer">

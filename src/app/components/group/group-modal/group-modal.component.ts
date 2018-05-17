@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {StudentGroup} from "../../../models/StudentGroup";
 
 @Component({
   selector: 'group-modal',
@@ -7,7 +8,7 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./group-modal.component.scss']
 })
 export class GroupModalComponent implements OnInit {
-  @Input() name;
+  @Input() group: StudentGroup;
 
   constructor(public activeModal: NgbActiveModal) { }
 

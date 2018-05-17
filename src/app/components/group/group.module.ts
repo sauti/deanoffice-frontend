@@ -23,6 +23,7 @@ import { GroupModalComponent } from './group-modal/group-modal.component';
   exports: [
     GroupComponent,
     GroupTableComponent
-  ]
+  ],
+  entryComponents: [GroupModalComponent]
 })
 export class GroupModule { }

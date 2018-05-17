@@ -58,8 +58,8 @@ export class GroupComponent implements OnInit {
   }
 
   openModal(group){
-    const modalRef = this.modalService.open(GroupModalComponent);
-    modalRef.componentInstance.name = group.name;
+    const modalRef = this.modalService.open(GroupModalComponent, {size: 'lg'});
+    modalRef.componentInstance.group = group;
   }
 
   onSelect(groups){

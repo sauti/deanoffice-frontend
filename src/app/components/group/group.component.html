@@ -14,7 +14,7 @@
             <div></div>
             <div>
             <button class="btn btn-danger " [disabled]="selectedGroups.length===0">Видалити</button>
-            <button class="btn btn-warning " [disabled]="selectedGroups.length!==1">Редагувати</button>
+            <button class="btn btn-warning " (click)="openModal(selectedGroups[0])" [disabled]="selectedGroups.length!==1">Редагувати</button>
             <button class="btn btn-success ">Створити</button>
             </div>
           </div>

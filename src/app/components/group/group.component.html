@@ -13,8 +13,8 @@
           <div class="col mb-3 d-flex justify-content-between">
             <div></div>
             <div>
-            <button class="btn btn-danger ">Видалити</button>
-            <button class="btn btn-warning ">Редагувати</button>
+            <button class="btn btn-danger " [disabled]="selectedGroups.length===0">Видалити</button>
+            <button class="btn btn-warning " [disabled]="selectedGroups.length!==1">Редагувати</button>
             <button class="btn btn-success ">Створити</button>
             </div>
           </div>

@@ -3,6 +3,8 @@ import {StudentGroup} from '../../models/StudentGroup';
 import {GroupService} from '../../services/group.service';
 import {TuitionTerm} from '../../models/tuition-term.enum';
 import {TuitionForm} from '../../models/tuition-form.enum';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {GroupModalComponent} from "./group-modal/group-modal.component";
 
 @Component({
   selector: 'app-group',
@@ -14,8 +16,9 @@ export class GroupComponent implements OnInit {
   groups: StudentGroup[] = [];
   actualGroups: boolean | true;
   searchText: string;
+  selectedGroups = [];
   loadingGroups = true;
-  constructor(private groupService: GroupService) { }
+  constructor(private groupService: GroupService, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.getGroups();
@@ -52,6 +55,16 @@ export class GroupComponent implements OnInit {
 
   private translateTuitionTerm(term: TuitionTerm) {
     return TuitionTerm[term];
+  }
+
+  openModal(group){
+    const modalRef = this.modalService.open(GroupModalComponent);
+    modalRef.componentInstance.name = group.name;
+  }
+
+  onSelect(groups){
+    this.selectedGroups = groups;
+    console.log(this.selectedGroups);
   }
 
 }

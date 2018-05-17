@@ -23,6 +23,7 @@
           [rows]="groups"
           [searchText]="searchText"
           [loading]="loadingGroups"
+          (onSelect)="onSelect($event)"
         ></group-table>
       </div>
 

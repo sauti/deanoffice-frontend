@@ -6,39 +6,80 @@
 </div>
 <div class="modal-body">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-4">
-        <label for="name" class="form-label">Назва</label>
-        <input type="text" [(ngModel)]="group.name" placeholder="Name" class="form-control" id="name">
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-4">
+          <label for="name" class="form-label">Назва</label>
+          <input formControlName="name" type="text" [(ngModel)]="group.name" placeholder="Name" class="form-control"
+                 id="name"
+                 [appValidation]="form.controls.name"
+          >
+          <app-validation-errors [control]="form.controls.name"></app-validation-errors>
+        </div>
+        <div class="col-4">
+          <label for="spec" class="form-label">Спеціалізація</label>
+          <input formControlName="specialization" type="text" [(ngModel)]="group.specialization.name" placeholder="Name"
+                 class="form-control" id="spec"
+                 [appValidation]="form.controls.specialization"
+          >
+          <app-validation-errors [control]="form.controls.specialization"></app-validation-errors>
+
+        </div>
+        <div class="col-4">
+          <label for="beginYears" class="form-label">Початковий курс</label>
+          <input type="text" [(ngModel)]="group.beginYears" placeholder="Name" class="form-control" id="beginYears"
+                 formControlName="beginYears" [appValidation]="form.controls.beginYears"
+          >
+          <app-validation-errors [control]="form.controls.beginYears"></app-validation-errors>
+
+        </div>
       </div>
-      <div class="col-4">
-        <label for="spec" class="form-label">Спеціалізація</label>
-        <input type="text" [(ngModel)]="group.specialization.name" placeholder="Name" class="form-control" id="spec">
+      <div class="row">
+        <div class="col-4">
+          <label for="creationYear">Рік створення</label>
+          <input type="text" [(ngModel)]="group.creationYear" placeholder="Name" class="form-control" id="creationYear"
+                 formControlName="creationYear" [appValidation]="form.controls.creationYear"
+          >
+          <app-validation-errors [control]="form.controls.creationYear"></app-validation-errors>
+
+        </div>
+        <div class="col-4">
+          <label for="studySemesters">Cеместрів</label>
+          <input type="text" [(ngModel)]="group.studySemesters" placeholder="Name" class="form-control"
+                 id="studySemesters"
+                 formControlName="studySemesters" [appValidation]="form.controls.studySemesters"
+          >
+          <app-validation-errors [control]="form.controls.studySemesters"></app-validation-errors>
+
+        </div>
+        <div class="col-4">
+          <label for="studyYears">Років навчання</label>
+          <input type="text" [(ngModel)]="group.studyYears" placeholder="Name" class="form-control" id="studyYears"
+                 formControlName="studyYears" [appValidation]="form.controls.studyYears"
+          >
+          <app-validation-errors [control]="form.controls.studyYears"></app-validation-errors>
+
+        </div>
       </div>
-      <div class="col-4">
-        <label for="beginYears" class="form-label">Початковий курс</label>
-        <input type="text" [(ngModel)]="group.beginYears" placeholder="Name" class="form-control" id="beginYears">
+      <div class="row">
+        <div class="col">
+          <label for="tF">Форма навчання</label>
+          <input type="text" [(ngModel)]="group.tuitionForm" placeholder="Name" class="form-control" id="tF"
+                 formControlName="tuitionForm" [appValidation]="form.controls.tuitionForm"
+          >
+          <app-validation-errors [control]="form.controls.tuitionForm"></app-validation-errors>
+
+        </div>
+        <div class="col">
+          <label for="tT">Термін навчання</label>
+          <input type="text" [(ngModel)]="group.tuitionTerm" placeholder="Name" class="form-control" id="tT"
+                 formControlName="tuitionTerm" [appValidation]="form.controls.tuitionTerm"
+          >
+          <app-validation-errors [control]="form.controls.tuitionTerm"></app-validation-errors>
+
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <label for="creationYear">Рік створення</label>
-        <input type="text" [(ngModel)]="group.creationYear" placeholder="Name" class="form-control" id="creationYear">
-      </div>
-      <div class="col-4">
-        <label for="studySemesters">Cеместрів</label>
-        <input type="text" [(ngModel)]="group.studySemesters" placeholder="Name" class="form-control"
-               id="studySemesters">
-      </div>
-      <div class="col-4">
-        <label for="studyYears">Років навчання</label>
-        <input type="text" [(ngModel)]="group.studyYears" placeholder="Name" class="form-control" id="studyYears">
-      </div>
-    </div>
-    <div class="row">
-      <input type="text" [(ngModel)]="group.tuitionForm" placeholder="Name" class="form-control" id="tF">
-      <input type="text" [(ngModel)]="group.tuitionTerm" placeholder="Name" class="form-control" id="tT">
-    </div>
+    </form>
   </div>
 </div>
 <div class="modal-footer">

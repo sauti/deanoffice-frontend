@@ -8,6 +8,8 @@
     [rowHeight]="'auto'"
     [selectionType]="'checkbox'"
     [selectAllRowsOnPage]="false"
+    [selected]="selected"
+    (select)="select($event)"
   >
     <ngx-datatable-column
       [width]="30"

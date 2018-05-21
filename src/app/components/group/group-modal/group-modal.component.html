@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-4">
           <label for="name" class="form-label">Назва</label>
-          <input formControlName="name" type="text" [(ngModel)]="group.name" placeholder="Name" class="form-control"
+          <input formControlName="name" type="text" [ngModel]="group.name" placeholder="Ім'я" class="form-control"
                  id="name"
                  [appValidation]="form.controls.name"
           >
@@ -18,7 +18,7 @@
         </div>
         <div class="col-4">
           <label for="spec" class="form-label">Спеціалізація</label>
-          <input formControlName="specialization" type="text" [(ngModel)]="group.specialization.name" placeholder="Name"
+          <input formControlName="specialization" type="text" [(ngModel)]="group.specialization.name" placeholder="Спеціалізація"
                  class="form-control" id="spec"
                  [appValidation]="form.controls.specialization"
           >
@@ -27,7 +27,7 @@
         </div>
         <div class="col-4">
           <label for="beginYears" class="form-label">Початковий курс</label>
-          <input type="text" [(ngModel)]="group.beginYears" placeholder="Name" class="form-control" id="beginYears"
+          <input type="text" [(ngModel)]="group.beginYears" placeholder="Початковий курс" class="form-control" id="beginYears"
                  formControlName="beginYears" [appValidation]="form.controls.beginYears"
           >
           <app-validation-errors [control]="form.controls.beginYears"></app-validation-errors>
@@ -37,7 +37,7 @@
       <div class="row">
         <div class="col-4">
           <label for="creationYear">Рік створення</label>
-          <input type="text" [(ngModel)]="group.creationYear" placeholder="Name" class="form-control" id="creationYear"
+          <input type="text" [(ngModel)]="group.creationYear" placeholder="Рік створення" class="form-control" id="creationYear"
                  formControlName="creationYear" [appValidation]="form.controls.creationYear"
           >
           <app-validation-errors [control]="form.controls.creationYear"></app-validation-errors>
@@ -45,7 +45,7 @@
         </div>
         <div class="col-4">
           <label for="studySemesters">Cеместрів</label>
-          <input type="text" [(ngModel)]="group.studySemesters" placeholder="Name" class="form-control"
+          <input type="text" [(ngModel)]="group.studySemesters" placeholder="Cеместрів" class="form-control"
                  id="studySemesters"
                  formControlName="studySemesters" [appValidation]="form.controls.studySemesters"
           >
@@ -54,7 +54,7 @@
         </div>
         <div class="col-4">
           <label for="studyYears">Років навчання</label>
-          <input type="text" [(ngModel)]="group.studyYears" placeholder="Name" class="form-control" id="studyYears"
+          <input type="text" [(ngModel)]="group.studyYears" placeholder="Років навчання" class="form-control" id="studyYears"
                  formControlName="studyYears" [appValidation]="form.controls.studyYears"
           >
           <app-validation-errors [control]="form.controls.studyYears"></app-validation-errors>
@@ -64,7 +64,7 @@
       <div class="row">
         <div class="col">
           <label for="tF">Форма навчання</label>
-          <input type="text" [(ngModel)]="group.tuitionForm" placeholder="Name" class="form-control" id="tF"
+          <input type="text" [(ngModel)]="group.tuitionForm" placeholder="Форма навчання" class="form-control" id="tF"
                  formControlName="tuitionForm" [appValidation]="form.controls.tuitionForm"
           >
           <app-validation-errors [control]="form.controls.tuitionForm"></app-validation-errors>
@@ -72,7 +72,7 @@
         </div>
         <div class="col">
           <label for="tT">Термін навчання</label>
-          <input type="text" [(ngModel)]="group.tuitionTerm" placeholder="Name" class="form-control" id="tT"
+          <input type="text" [(ngModel)]="group.tuitionTerm" placeholder="Термін навчання" class="form-control" id="tT"
                  formControlName="tuitionTerm" [appValidation]="form.controls.tuitionTerm"
           >
           <app-validation-errors [control]="form.controls.tuitionTerm"></app-validation-errors>

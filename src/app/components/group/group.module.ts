@@ -7,6 +7,7 @@ import {GroupComponent} from './group.component';
 import {PipeModule} from '../../pipes/pipe.module';
 import { GroupModalComponent } from './group-modal/group-modal.component';
 import {RouterModule, Routes} from '@angular/router';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 export const groupRoutes: Routes = [
   {path: '', component: GroupComponent}
@@ -19,7 +20,8 @@ export const groupRoutes: Routes = [
     ReactiveFormsModule,
     SharedModule,
     PipeModule.forRoot(),
-    RouterModule.forChild(groupRoutes)
+    RouterModule.forChild(groupRoutes),
+    NgbModule.forRoot()
   ],
   declarations: [
     GroupTableComponent,

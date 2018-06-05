@@ -18,7 +18,8 @@
         </div>
         <div class="col-4">
           <label for="spec" class="form-label">Спеціалізація</label>
-          <input formControlName="specialization" type="text" [(ngModel)]="group.specialization.name" placeholder="Спеціалізація"
+          <input formControlName="specialization" type="text" [(ngModel)]="group.specialization.name"
+                 placeholder="Спеціалізація"
                  class="form-control" id="spec"
                  [appValidation]="form.controls.specialization"
           >
@@ -27,7 +28,8 @@
         </div>
         <div class="col-4">
           <label for="beginYears" class="form-label">Початковий курс</label>
-          <input type="number" [(ngModel)]="group.beginYears" placeholder="Початковий курс" class="form-control" id="beginYears"
+          <input type="number" [(ngModel)]="group.beginYears" placeholder="Початковий курс" class="form-control"
+                 id="beginYears"
                  formControlName="beginYears" [appValidation]="form.controls.beginYears"
           >
           <app-validation-errors [control]="form.controls.beginYears"></app-validation-errors>
@@ -37,7 +39,8 @@
       <div class="row">
         <div class="col-4">
           <label for="creationYear">Рік створення</label>
-          <input type="number" [(ngModel)]="group.creationYear" placeholder="Рік створення" class="form-control" id="creationYear"
+          <input type="number" [(ngModel)]="group.creationYear" placeholder="Рік створення" class="form-control"
+                 id="creationYear"
                  formControlName="creationYear" [appValidation]="form.controls.creationYear"
           >
           <app-validation-errors [control]="form.controls.creationYear"></app-validation-errors>
@@ -54,7 +57,8 @@
         </div>
         <div class="col-4">
           <label for="studyYears">Років навчання</label>
-          <input type="number" [(ngModel)]="group.studyYears" placeholder="Років навчання" class="form-control" id="studyYears"
+          <input type="number" [(ngModel)]="group.studyYears" placeholder="Років навчання" class="form-control"
+                 id="studyYears"
                  formControlName="studyYears" [appValidation]="form.controls.studyYears"
           >
           <app-validation-errors [control]="form.controls.studyYears"></app-validation-errors>
@@ -64,17 +68,24 @@
       <div class="row">
         <div class="col">
           <label for="tF">Форма навчання</label>
-          <input type="text" [(ngModel)]="group.tuitionForm" placeholder="Форма навчання" class="form-control" id="tF"
-                 formControlName="tuitionForm" [appValidation]="form.controls.tuitionForm"
+          <select [(ngModel)]="group.tuitionForm" placeholder="Форма навчання" class="form-control" id="tF"
+                  formControlName="tuitionForm" [appValidation]="form.controls.tuitionForm"
           >
+            <option value="EXTRAMURAL">Заочна</option>
+            <option value="FULL_TIME">Денна</option>
+          </select>
           <app-validation-errors [control]="form.controls.tuitionForm"></app-validation-errors>
 
         </div>
         <div class="col">
           <label for="tT">Термін навчання</label>
-          <input type="text" [(ngModel)]="group.tuitionTerm" placeholder="Термін навчання" class="form-control" id="tT"
-                 formControlName="tuitionTerm" [appValidation]="form.controls.tuitionTerm"
+          <select [(ngModel)]="group.tuitionTerm" placeholder="Термін навчання" class="form-control" id="tT"
+                  formControlName="tuitionTerm" [appValidation]="form.controls.tuitionTerm"
           >
+            <option value="REGULAR">Повна</option>
+            <option value="SHORTENED">Скорочена</option>
+          </select>
+
           <app-validation-errors [control]="form.controls.tuitionTerm"></app-validation-errors>
 
         </div>

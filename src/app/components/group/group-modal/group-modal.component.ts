@@ -3,17 +3,19 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {StudentGroup} from "../../../models/StudentGroup";
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {BaseReactiveFormComponent} from '../../shared/base-reactive-form/base-reactive-form.component';
+import {GroupService} from '../../../services/group.service';
 
 @Component({
   selector: 'group-modal',
   templateUrl: './group-modal.component.html',
-  styleUrls: ['./group-modal.component.scss']
+  styleUrls: ['./group-modal.component.scss'],
+  providers: [GroupService]
 })
 export class GroupModalComponent implements OnInit {
   @Input() group: StudentGroup;
   form: FormGroup;
 
-  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) {
+  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder, private groupService: GroupService) {
 
   }
 
@@ -34,5 +36,14 @@ export class GroupModalComponent implements OnInit {
        tuitionForm: [this.group.tuitionForm, Validators.required],
      });
   }
+
+  updateGroup(){
+    this.groupService.updateGroup(this.group).subscribe(response => {
+      console.log(response)
+    },
+    )
+
+  }
+
 
 }

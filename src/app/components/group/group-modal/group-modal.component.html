@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-4">
           <label for="name" class="form-label">Назва</label>
-          <input formControlName="name" type="text" [ngModel]="group.name" placeholder="Ім'я" class="form-control"
+          <input formControlName="name" type="text" [(ngModel)]="group.name" placeholder="Ім'я" class="form-control"
                  id="name"
                  [appValidation]="form.controls.name"
           >
@@ -83,5 +83,5 @@
   </div>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  <button type="button" class="btn btn-outline-dark" (click)="updateGroup()">Close</button>
 </div>

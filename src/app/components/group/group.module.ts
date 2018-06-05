@@ -8,6 +8,7 @@ import {PipeModule} from '../../pipes/pipe.module';
 import { GroupModalComponent } from './group-modal/group-modal.component';
 import {RouterModule, Routes} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AuthenticationModule} from '../login/authentication.module';
 
 export const groupRoutes: Routes = [
   {path: '', component: GroupComponent}
@@ -32,6 +33,9 @@ export const groupRoutes: Routes = [
     GroupComponent,
     GroupTableComponent
   ],
-  entryComponents: [GroupModalComponent]
+  entryComponents: [GroupModalComponent],
+  providers: [
+    AuthenticationModule.tokenInterceptor()
+  ]
 })
 export class GroupModule { }

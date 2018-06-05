@@ -31,4 +31,8 @@ export class GroupService {
     return this.http.get<StudentGroup[]>(url)
       .pipe(catchError(HandleError.forObservable('Отримання груп за освітньо-кваліфікаційним рівнем та курсом', [])));
   }
+
+  updateGroup(group: StudentGroup){
+    return this.http.put(this.groupsUrl, group);
+  }
 }

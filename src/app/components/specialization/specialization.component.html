@@ -18,12 +18,12 @@
 
         <div>
           <button type="button" class="btn btn-danger align-middle"
-                  (click)="deleteSpecialization.openModal(selectedSpecializations)" [disabled]="deleteIsDisabled()">
+                  (click)="deleteSpecialization.openModal(selectedSpecialization)" [disabled]="buttonIsDisabled()">
             Видалити
           </button>
 
-          <button type="button" class="btn btn-warning align-middle" [disabled]="updateIsDisabled()"
-                  (click)="updateSpecialization.openModal(selectedSpecializations[0].id)">
+          <button type="button" class="btn btn-warning align-middle" [disabled]="buttonIsDisabled()"
+                  (click)="updateSpecialization.openModal(selectedSpecialization.id)">
             Редагувати
           </button>
 
@@ -35,9 +35,9 @@
 
       <div class="specializations-table">
         <app-specializations-table
-          [setRows]="specializations | searchSpecializations: searchField"
+          [rows]="specializations | searchSpecializations: searchField"
           [loading]="loading"
-          (selectedRows)="selectSpecializations($event)"
+          (onSelect)="selectSpecializations($event)"
         ></app-specializations-table>
       </div>
 

@@ -71,7 +71,6 @@ export class CourseCreationComponent implements OnInit {
 
   checkCourseName(name) {
     if (name instanceof CourseName) {
-      console.dir(name);
       return;
     }
     else {
@@ -111,8 +110,8 @@ export class CourseCreationComponent implements OnInit {
         '',
         this.alertOptions);
     if (this.failCreated)
-      this._service.error('Предмет вже існує або поля заповнені невірно!!',
-        '',
+      this._service.error('Помилка',
+        'Предмет вже існує або поля заповнені невірно!',
         this.alertOptions);
     if (this.fail)
       this._service.error('Невідома помилка',

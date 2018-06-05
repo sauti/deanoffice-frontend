@@ -1,80 +1,86 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {Specialization} from '../../../models/Specialization';
 
+import {tableColumnTranslations} from '../transtations';
 
-class SpecializationWithSelected extends Specialization {
-  isSelected: boolean;
-}
+const columns: string[] = [
+  'name',
+  'nameEng',
+  'speciality',
+  'degree.name',
+  'educationalProgramHeadName'
+];
 
 @Component({
   selector: 'app-specializations-table',
   templateUrl: './specializations-table.component.html',
   styleUrls: ['./specializations-table.component.scss']
 })
-export class SpecializationsTableComponent {
-  @Input() set setRows(rows: SpecializationWithSelected[]) {
-    this.rows = rows;
-    this.selectedSpecializations = [];
-    this.emitSelectedSpecializations();
-  };
-
+export class SpecializationsTableComponent implements OnInit {
+  @Input() rows: Specialization[];
   @Input() loading: boolean;
-  @Output() selectedRows: EventEmitter<Specialization[]> = new EventEmitter<Specialization[]>();
-  private selectedSpecializations: Specialization[] = [];
-  rows: SpecializationWithSelected[];
-  allRowsIsSelected = false;
+  @Output() onSelect: EventEmitter<Specialization> = new EventEmitter<Specialization>();
+  @ViewChild('specialityTemplate') specialityTemplate: TemplateRef<any>;
+  selected: Specialization;
+  columns = [];
 
-  selectAll(event: boolean): void {
-    if (this.loading) {
+  ngOnInit() {
+    this.columns = this._transformArrayToColumns();
+  }
+
+  private _transformArrayToColumns(): Object[] {
+    const templatesMap = {
+      'speciality': {
+        cellTemplate: this.specialityTemplate
+      },
+      'degree.name': {
+        width: 100,
+        resizable: false,
+        canAutoResize: false
+      },
+      'selected': {
+        name: '',
+        sortable: false,
+        canAutoResize: false,
+        draggable: false,
+        resizable: false,
+        headerCheckboxable: true,
+        checkboxable: true,
+        width: 30
+      }
+    };
+
+    return ['selected', ...columns].map(prop => {
+      return {prop, name: tableColumnTranslations[prop], ...templatesMap[prop]};
+    });
+  }
+
+  getRowIdentity(row) {
+    return row.id;
+  }
+
+  select({selected}) {
+    this.handleSelect([...selected].pop())
+  }
+
+  handleSelect(specialization: Specialization) {
+    this.selected = specialization;
+    this.onSelect.emit(this.selected);
+  }
+
+  activate({ type, row, column }) {
+    if (type !== 'click' || column.prop === 'selected') {
       return;
     }
-    if (event) {
-      this.selectedSpecializations = [...this.rows];
+    if (this.selected === row) {
+      this.selected = null;
+      this.onSelect.emit(this.selected);
     } else {
-      this.selectedSpecializations = [];
+      this.handleSelect(row);
     }
-    this.changeAllIsSelected(event);
-    this.emitSelectedSpecializations();
   }
 
-  emitSelectedSpecializations(): void {
-    this.selectedRows.emit(this.selectedSpecializations);
-  }
-
-  private changeAllIsSelected(isSelected: boolean): void {
-    this.rows.forEach((item: SpecializationWithSelected) => item.isSelected = isSelected);
-    this.allRowsIsSelected = isSelected;
-  }
-
-  selectItem(event: boolean, id: number): void {
-    if (event) {
-      const selectedItem: Specialization = this.findSpecialization(id);
-      this.selectedSpecializations.push(selectedItem);
-    } else {
-      const itemIndex: number = this.selectedSpecializations.indexOf(this.findSpecialization(id));
-      this.selectedSpecializations.splice(itemIndex, 1);
-    }
-    this.changeIsSelected(id, event);
-    this.emitSelectedSpecializations();
-  }
-
-  private findSpecialization(id: number): SpecializationWithSelected {
-    return this.rows.find((item: SpecializationWithSelected) => item.id === id);
-  }
-
-  private changeIsSelected(id: number, isSelected: boolean): void {
-    this.findSpecialization(id).isSelected = isSelected;
-    this.allRowsIsSelected = this.isAllRowsSelected();
-  }
-
-  private isAllRowsSelected(): boolean {
-    const getIdFromSpecializations = (item: Specialization) => item.id;
-    const rowIds: number[] = this.rows.map(getIdFromSpecializations);
-    const selectedRowIds: number[] = this.selectedSpecializations.map(getIdFromSpecializations);
-    return rowIds.length === selectedRowIds.length && rowIds.length !== 0;
-  }
-
-  getTableRowClass(isSelected: boolean) {
-    return (isSelected) ? 'table-success' : '';
+  getSelected() {
+    return (this.selected) ? [this.selected] : [];
   }
 }

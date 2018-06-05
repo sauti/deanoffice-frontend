@@ -9,18 +9,14 @@ export class Specialization extends NameWithEngAndActiveEntity {
   department?: Department;
   qualification?: string;
   qualificationEng?: string;
-  paymentFullTime?: number;
+  paymentFulltime?: number;
   paymentExtramural?: number;
   educationalProgramHeadName: string;
   educationalProgramHeadNameEng: string;
   educationalProgramHeadInfo: string;
   educationalProgramHeadInfoEng: string;
-  knowledgeAndUnderstandingOutcomes?: string;
-  knowledgeAndUnderstandingOutcomesEng?: string;
-  applyingKnowledgeAndUnderstandingOutcomes?: string;
-  applyingKnowledgeAndUnderstandingOutcomesEng?: string;
-  makingJudgementsOutcomes?: string;
-  makingJudgementsOutcomesEng?: string;
+  certificateNumber: string;
+  certificateDate: Date;
 
   specialityId?: number;
   degreeId?: number;

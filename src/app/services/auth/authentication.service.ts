@@ -21,9 +21,10 @@ export class AuthenticationService {
     return this.http.post(`${environment.apiUrl}/login`, JSON.stringify({ username: username, password: password }))
       .map((response:any) => {
         let token = response && response.token;
+        let roles = response && JSON.parse(response.roles);
         if (token) {
           this.token = token;
-          localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
+          localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token, roles: roles }));
           this.isLoggedIn.next(true);
           return true;
         } else {

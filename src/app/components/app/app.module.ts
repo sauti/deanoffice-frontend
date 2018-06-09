@@ -30,6 +30,9 @@ import {ExamReportService} from '../../services/exam-report.service';
 
 import {appRoutes} from './app-routes';
 
+import {AdminGuard} from '../../services/auth/auth.guard';
+import {CurrentUserService} from '../../services/auth/current-user.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +64,8 @@ import {appRoutes} from './app-routes';
     AuthenticationService,
     DashboardGuard,
     LoginGuard,
+    AdminGuard,
+    CurrentUserService,
     AuthenticationModule.tokenInterceptor()
   ],
   bootstrap: [AppComponent]

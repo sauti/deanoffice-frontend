@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
+import {CurrentUserService} from './current-user.service';
 
 @Injectable()
 export class DashboardGuard implements CanActivate {
@@ -25,6 +26,20 @@ export class LoginGuard implements CanActivate {
       return true;
     }
     this.router.navigate(['/dashboard']);
+    return false;
+  }
+}
+
+@Injectable()
+export class AdminGuard implements CanActivate {
+
+  constructor(private router: Router, private currentUser: CurrentUserService) { }
+
+  canActivate() {
+    if (this.currentUser.isAdmin()) {
+      return true;
+    }
+    this.router.navigate(['/login']);
     return false;
   }
 }

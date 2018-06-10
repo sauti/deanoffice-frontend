@@ -1,0 +1,10 @@
+<application-user-modal #modal [title]="'Створити нового користувача'" (hideModal)="hideModal()">
+  <div class="modal-body">
+    <application-user-form #form></application-user-form>
+  </div>
+
+  <div class="modal-footer">
+    <button (click)="submit()" class="btn btn-success btn-submit">Створити</button>
+    <button (click)="hideModal()" class="btn btn-outline-danger">Скасувати</button>
+  </div>
+</application-user-modal>

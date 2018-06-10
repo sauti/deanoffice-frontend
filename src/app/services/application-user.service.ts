@@ -19,4 +19,9 @@ export class ApplicationUserService {
       .pipe(catchError(forObservable('Отримання користувачів', [])));
   }
 
+  create(body: ApplicationUser): Promise<any> {
+    return this._httpClient.post(SPECIALIZATION_URL, body).toPromise()
+      .catch(forPromise('Створення нового користувача'));
+  }
+
 }

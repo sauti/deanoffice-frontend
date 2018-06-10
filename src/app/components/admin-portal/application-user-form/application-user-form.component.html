@@ -1,0 +1,46 @@
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label for="username" class="required">Нік</label>
+        <input formControlName="username" type="text" class="form-control" id="username">
+        <app-validation-errors [control]="form.controls.username"></app-validation-errors>
+      </div>
+
+      <div class="form-group">
+        <label for="firstName" class="required">Ім'я</label>
+        <input formControlName="firstName" type="text" class="form-control" id="firstName">
+        <app-validation-errors [control]="form.controls.firstName"></app-validation-errors>
+      </div>
+
+      <div class="form-group">
+        <label for="facultyId" class="required">Факультет</label>
+        <select formControlName="facultyId" class="form-control" id="facultyId"
+                [appValidation]="form.controls.facultyId">
+          <option *ngFor="let f of faculties" [ngValue]="f.id">
+            {{f.abbr + ' ' + f.name}}
+          </option>
+        </select>
+        <app-validation-errors [control]="form.controls.facultyId"></app-validation-errors>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+
+        <div class="form-group">
+          <label for="password" class="required">Пароль</label>
+          <input formControlName="password" type="text" class="form-control" id="password">
+          <app-validation-errors [control]="form.controls.password"></app-validation-errors>
+        </div>
+
+        <div class="form-group">
+          <label for="lastName" class="required">Прізвище</label>
+          <input formControlName="lastName" type="text" class="form-control" id="lastName">
+          <app-validation-errors [control]="form.controls.lastName"></app-validation-errors>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>

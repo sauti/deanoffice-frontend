@@ -33,6 +33,7 @@ import {appRoutes} from './app-routes';
 
 import {AdminGuard} from '../../services/auth/auth.guard';
 import {CurrentUserService} from '../../services/auth/current-user.service';
+import {FacultyService} from '../../services/faculty.service';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import {CurrentUserService} from '../../services/auth/current-user.service';
     GradeService,
     SpecialityService,
     SpecializationService,
+    FacultyService,
     DepartmentService,
     AuthenticationService,
     ApplicationUserService,

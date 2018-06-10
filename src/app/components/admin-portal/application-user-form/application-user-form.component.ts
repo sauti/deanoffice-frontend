@@ -22,13 +22,14 @@ export class ApplicationUserFormComponent extends BaseReactiveFormComponent impl
     this.setInitialData();
   }
 
-  setInitialData(data: Specialization = new Specialization()) {
+  setInitialData(data: ApplicationUser = new ApplicationUser()) {
     this.form = this._formBuilder.group({
-      firstName: [null, Validators.required],
-      lastName: [null, Validators.required],
-      username: [null, Validators.required],
-      password: [null, Validators.required],
-      facultyId: [null, Validators.required]
+      id: [data.id],
+      firstName: [data.firstName, Validators.required],
+      lastName: [data.lastName, Validators.required],
+      username: [data.username, Validators.required],
+      password: [data.password, (this.updateForm ? null : Validators.required)],
+      facultyId: [(data.facultyId ), Validators.required]
     });
   }
 

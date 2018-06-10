@@ -1,0 +1,13 @@
+<application-user-modal #modal title="Видалення користувача" (hideModal)="hideModal()">
+  <div class="modal-body" *ngIf="applicationUser">
+    <h5>{{applicationUser.username}}</h5>
+    <div>
+      <div><b>Ім'я:</b> {{applicationUser.firstName}}</div>
+      <div><b>Прізвище:</b> {{applicationUser.lastName}}</div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="submit()">Видалити</button>
+    <button type="button" class="btn btn-outline-danger" (click)="hideModal()">Скасувати</button>
+  </div>
+</application-user-modal>

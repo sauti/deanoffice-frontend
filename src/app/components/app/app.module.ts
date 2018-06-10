@@ -27,6 +27,7 @@ import {DiplomaSupplementService} from '../../services/diploma-supplement.servic
 import {CourseForGroupService} from '../../services/course-for-group.service';
 import {GeneralService} from '../../services/general.service'
 import {ExamReportService} from '../../services/exam-report.service';
+import {ApplicationUserService} from '../../services/application-user.service';
 
 import {appRoutes} from './app-routes';
 
@@ -62,6 +63,7 @@ import {CurrentUserService} from '../../services/auth/current-user.service';
     SpecializationService,
     DepartmentService,
     AuthenticationService,
+    ApplicationUserService,
     DashboardGuard,
     LoginGuard,
     AdminGuard,

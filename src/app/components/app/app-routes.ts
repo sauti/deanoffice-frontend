@@ -1,4 +1,4 @@
-import {DashboardGuard, LoginGuard} from '../../services/auth/auth.guard';
+import {AdminGuard, DashboardGuard, LoginGuard} from '../../services/auth/auth.guard';
 import {Routes} from '@angular/router';
 
 /**
@@ -35,6 +35,11 @@ export const appRoutes: Routes = [
       {path: 'specialities', loadChildren: '../speciality/speciality.module#SpecialityModule'},
       {path: 'groups', loadChildren: '../group/group.module#GroupModule'},
       {path: 'specializations', loadChildren: '../specialization/specialization.module#SpecializationModule'}
+    ]
+  },
+  {
+    path: 'admin-portal', canActivate: [AdminGuard], children: [
+      {path: 'users', loadChildren: '../admin-portal/admin-portal.module#AdminPortalModule'},
     ]
   },
   {path: '**', redirectTo: 'dashboard', pathMatch: 'full'},

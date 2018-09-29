@@ -1,13 +1,12 @@
-import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
-import {Course} from '../../../models/Course';
-import {KnowledgeControl} from '../../../models/KnowlegeControl';
-import {CourseService} from '../../../services/course.service';
-import {KnowledgeControlService} from '../../../services/knowledge-control.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {CourseName} from '../../../models/CourseName';
-import {Subject} from 'rxjs/Subject';
-import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
-import {Observable} from 'rxjs/Observable';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Course } from '../../../models/Course';
+import { KnowledgeControl } from '../../../models/KnowlegeControl';
+import { CourseService } from '../../../services/course.service';
+import { KnowledgeControlService } from '../../../services/knowledge-control.service';
+import { CourseName } from '../../../models/CourseName';
+import { Subject } from 'rxjs/Subject';
+import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/merge';
 import 'rxjs/add/operator/filter';
@@ -42,24 +41,9 @@ export class CourseCreationComponent implements OnInit {
     this.knowledgeControlService.getAll().subscribe(kc => {
       this.knowledgeControl = kc;
     });
-    this.courseService.getCourseNames().subscribe((courseNames: CourseName[]) =>{
+    this.courseService.getCourseNames().subscribe((courseNames: CourseName[]) => {
       this.courseNames = courseNames;
     });
-
-    // this.form = new FormGroup({
-    //   'courseName': new FormControl(this.course.courseName.name, [
-    //     Validators.required,
-    //   ]),
-    //   'semester': new FormControl(this.course.semester, [
-    //     Validators.required,
-    //   ]),
-    //   'hours': new FormControl(this.course.hours, [
-    //     Validators.required,
-    //   ]),
-    //   'kc': new FormControl(this.course.knowledgeControl.name, [
-    //     Validators.required,
-    //   ]),
-    // });
   }
 
   formatter = (result: CourseName) => result.name;
@@ -73,20 +57,19 @@ export class CourseCreationComponent implements OnInit {
       .map(term => term === '' ? []
         : this.courseNames.filter(v => v.name.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
 
-  checkCourseName(name){
+  checkCourseName(name) {
     if (name instanceof CourseName) {
       console.dir(name);
       return;
-    }
-    else {
-      let courseName = new CourseName();
+    } else {
+      const courseName = new CourseName();
       courseName.name = name;
       this.course.courseName = courseName;
       console.dir(this.course);
     }
   }
 
-  createCourse(){
+  createCourse() {
     this.setCredits();
     console.dir(this.course);
     this.courseService.createCourse(this.course).subscribe(() => {
@@ -100,8 +83,7 @@ export class CourseCreationComponent implements OnInit {
       if (error.status === 422) {
         this.failCreated = true;
         this.success = false;
-      }
-      else {
+      } else {
         this.success = false;
         this.fail = true;
       }
@@ -113,7 +95,7 @@ export class CourseCreationComponent implements OnInit {
   get hours() { return this.form.get('hours'); }
   get kc() { return this.form.get('kc'); }
 
-  private setCredits(){
+  private setCredits() {
     this.course.credits = this.course.hours / this.course.hoursPerCredit;
   }
 

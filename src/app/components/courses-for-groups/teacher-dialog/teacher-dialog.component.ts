@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {animate, style, transition, trigger} from '@angular/animations';
-import {Teacher} from '../../../models/Teacher';
-import {TeacherService} from '../../../services/teacher.service';
-import {CourseForGroup} from '../../../models/CourseForGroup';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { Teacher } from '../../../models/Teacher';
+import { TeacherService } from '../../../services/teacher.service';
+import { CourseForGroup } from '../../../models/CourseForGroup';
 
 @Component({
   selector: 'teacher-dialog',
@@ -38,7 +38,7 @@ export class TeacherDialogComponent implements OnInit {
     })
   }
 
-  selectTeacher(teacher: Teacher){
+  selectTeacher(teacher: Teacher) {
     this.coursesForGroups[this.cfgIndex].teacher = teacher;
     this.onTeacherSelect.emit(this.coursesForGroups);
     this.close();

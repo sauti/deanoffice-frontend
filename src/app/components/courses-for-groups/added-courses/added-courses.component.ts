@@ -1,7 +1,7 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {CourseForGroup} from '../../../models/CourseForGroup';
-import {StudentGroup} from '../../../models/StudentGroup';
-import {CourseForGroupService} from '../../../services/course-for-group.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CourseForGroup } from '../../../models/CourseForGroup';
+import { StudentGroup } from '../../../models/StudentGroup';
+import { CourseForGroupService } from '../../../services/course-for-group.service';
 
 @Component({
   selector: 'added-courses',
@@ -25,11 +25,16 @@ export class AddedCoursesComponent implements OnInit {
 
   ngOnInit() {}
 
-  getNameWithInitials(surname:String, name:String, patronimic:String){
-    if (surname==""||surname==undefined||surname==null) return "";
-    else if (name==""||name==undefined||name==null) return new String(surname);
-    else if (patronimic==""||patronimic==undefined||patronimic==null) return new String (surname+" "+name.substring(0, 1)+".");
-    else return new String (surname+" "+name.substring(0, 1)+". "+patronimic.substring(0,1)+".");
+  getNameWithInitials(surname: String, name: String, patronimic: String) {
+    if (surname === '' || surname === undefined || surname == null) {
+      return '';
+    } else if (name === '' || name === undefined || name == null) {
+      return new String(surname);
+    } else if (patronimic === '' || patronimic === undefined || patronimic == null) {
+      return new String (surname + ' ' + name.substring(0, 1) + '.');
+    } else {
+      return new String (surname + ' ' + name.substring(0, 1) + '. ' + patronimic.substring(0, 1) + '.');
+    }
   }
 
   getCoursesForGroup() {
@@ -39,11 +44,11 @@ export class AddedCoursesComponent implements OnInit {
     });
   }
 
-  addNewCoursesForGroup(){
-    for (let courseForAdd of this.selectedCoursesForGroups) {
+  addNewCoursesForGroup() {
+    for (const courseForAdd of this.selectedCoursesForGroups) {
       if (this.selectedCoursesForGroups.length > 0) {
         let courseIsAdded = false;
-        for (let courseForGroup of this.coursesForGroup) {
+        for (const courseForGroup of this.coursesForGroup) {
           if (courseForGroup.course.id === courseForAdd.course.id) {
             courseIsAdded = true;
           }
@@ -51,36 +56,37 @@ export class AddedCoursesComponent implements OnInit {
         if (!courseIsAdded) {
           this.coursesForGroup.push(courseForAdd);
         }
-      }
-      else this.coursesForGroup.push(courseForAdd);
+      } else { this.coursesForGroup.push(courseForAdd); }
     }
-    this.coursesForGroup.sort(function (a,b) {
-      if (a.course.courseName< b.course.courseName)
+    this.coursesForGroup.sort(function (a, b) {
+      if (a.course.courseName < b.course.courseName) {
         return -1;
-      if (a.course.courseName > b.course.courseName)
+      }
+      if (a.course.courseName > b.course.courseName) {
         return 1;
+      }
       return 0;
     });
   }
 
-  changeCoursesForDelete(checked: boolean, selectedCourse: CourseForGroup){
+  changeCoursesForDelete(checked: boolean, selectedCourse: CourseForGroup) {
     if (!checked) {
-      for (let course of this.coursesForGroupForDelete)
+      for (const course of this.coursesForGroupForDelete) {
         if (course.id === selectedCourse.id) {
           this.coursesForGroupForDelete.splice(this.coursesForGroupForDelete.indexOf(course), 1);
         }
-    }
-    else {
+      }
+    } else {
       this.coursesForGroupForDelete.push(selectedCourse);
     }
     this.onCoursesForDeleteChange.emit(this.coursesForGroupForDelete);
   }
 
-  changeTeacher(index){
+  changeTeacher(index) {
     this.onTeacherChange.emit({show: true, index: index});
   }
 
-  dateChange(index){
+  dateChange(index) {
     this.onDateChange.emit({index: index});
   }
 }

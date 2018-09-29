@@ -1,10 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {animate, style, transition, trigger} from '@angular/animations';
 import {CourseForGroup} from '../../../models/CourseForGroup';
-import {Teacher} from "../../../models/Teacher";
-import {StudentGroup} from "../../../models/StudentGroup";
-import {CourseForGroupService} from "../../../services/course-for-group.service";
-import {CoursesForGroupsComponent} from "../courses-for-groups.component";
+import {Teacher} from '../../../models/Teacher';
+import {StudentGroup} from '../../../models/StudentGroup';
+import {CourseForGroupService} from '../../../services/course-for-group.service';
+import {CoursesForGroupsComponent} from '../courses-for-groups.component';
 
 @Component({
   selector: 'copy-courses-dialog',
@@ -40,25 +40,25 @@ export class CopyCoursesDialogComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectGroup(group: StudentGroup){
+  selectGroup(group: StudentGroup) {
     this.selectedGroup = group;
     this.addCoursesForGroup();
     this.close();
   }
 
-  addSelectedCourses(){
-    if (this.copiedCoursesForGroup){
-      for (let copiedCourse of this.copiedCoursesForGroup){
+  addSelectedCourses() {
+    if (this.copiedCoursesForGroup) {
+      for (const copiedCourse of this.copiedCoursesForGroup) {
         let courseIsAdded = false;
-        if (this.coursesForGroups){
-          for (let course of this.coursesForGroups){
-            if (course.course.id === copiedCourse.course.id) courseIsAdded = true;
+        if (this.coursesForGroups) {
+          for (const course of this.coursesForGroups) {
+            if (course.course.id === copiedCourse.course.id) { courseIsAdded = true; }
           }
         }
-        if (!courseIsAdded){
+        if (!courseIsAdded) {
           copiedCourse.examDate = null;
-          if (!copiedCourse.teacher){
-            let teacher = new Teacher();
+          if (!copiedCourse.teacher) {
+            const teacher = new Teacher();
             copiedCourse.teacher = teacher;
           }
           this.coursesForGroups.push(copiedCourse);
